@@ -1,10 +1,11 @@
-
+import { renderLevel } from "./level-game.js";
 
 function renderFormSelectionLevel() {
     let appEl = document.getElementById('app');
 
     const appHTML = `
-    <form class="difficulty_box center" id="form-selection" action="#">
+    <div class="center">
+    <form class="difficulty_box" id="form-selection" action="#">
         <h3 class="difficulty_box__title">
             Выбери<br>сложность
         </h3>
@@ -21,10 +22,22 @@ function renderFormSelectionLevel() {
             <div class="difficulty_box__button">
                 <button type="submit" id="button-submit" class="button_start">Старт</button>
             </div>
-    </form>`;
+    </form>
+    </div>`;
 
     appEl.innerHTML = appHTML;
 
+    document.getElementById('form-selection').addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        let level = document.querySelectorAll('.button_level__radio');
+
+        for (const card of level) {
+            if (card.checked) {
+                renderLevel(card, appEl);
+            }
+        }
+    })
 }
 
 renderFormSelectionLevel();
