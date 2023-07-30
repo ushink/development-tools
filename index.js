@@ -10,7 +10,7 @@ function renderFormSelectionLevel() {
             Выбери<br>сложность
         </h3>
             <div class="difficulty_box__choice">
-                <input class="button_level__radio" type="radio" id="levelChoice1" name="level" value="6" />
+                <input class="button_level__radio" type="radio" id="levelChoice1" name="level" value="6" checked />
                 <label for="levelChoice1" class="button_level">1</label>
 
                 <input class="button_level__radio" type="radio" id="levelChoice2" name="level" value="12" />
@@ -37,7 +37,24 @@ function renderFormSelectionLevel() {
                 renderLevel(card, appEl);
             }
         }
+        
     })
+
+    /* другой вариант обработки клика
+    let level = document.querySelectorAll('.button_level__radio');
+    let button = document.querySelector('.button_start');
+
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        for (let card of level) {
+            if (card.checked) {
+                renderLevel(card, appEl);
+            }
+        }
+    });
+    */
+  
 }
 
 renderFormSelectionLevel();
