@@ -23,8 +23,8 @@ body {
 }
 
 .center {
-    padding-left: calc(50% - 282px);
-    padding-right: calc(50% - 282px);
+    padding-left: calc(50% - 600px);
+    padding-right: calc(50% - 600px);
 }
 
 .difficulty_box {
@@ -92,4 +92,67 @@ body {
     font-size: 24px;
     line-height: 32px;
     color: #fff;
+}
+
+.game_card__box {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding-left: 32px;
+    padding-right: 32px;
+    justify-content: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.game_timer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 64px;
+}
+
+.game_timer__item {
+    color: #fff;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: StratosSkyeng;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.game_timer__time {
+    color: #fff;
+    font-family: StratosSkyeng;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 72px;
+}
+
+.header_game__button {
+    font-family: StratosSkyeng, sans-serif;
+    width: 246px;
+    height: 50px;
+    background-color: #7ac100;
+    border: 1px solid #7ac100;
+    box-sizing: border-box;
+    border-radius: 12px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #fff;
+}
+
+.game_card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
 }
