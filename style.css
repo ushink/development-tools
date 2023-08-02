@@ -1,17 +1,17 @@
 @font-face {
-    font-family: "StratosSkyeng";
-    src: url("font-skyeng/Web\ fonts/stratosskyengweb-regular.woff");
+    font-family: StratosSkyeng;
+    src: url('./font-skyeng/Web\ fonts/stratosskyengweb-regular.woff');
     font-style: normal;
     font-weight: normal;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-body{
-    font-family: "StratosSkyeng", sans-serif;
+body {
+    font-family: StratosSkyeng, sans-serif;
     height: 735px;
     background-color: #004980;
     background-repeat: repeat;
@@ -22,13 +22,13 @@ body{
     justify-content: center;
 }
 
-.center{
+.center {
     padding-left: calc(50% - 282px);
     padding-right: calc(50% - 282px);
 }
 
-.difficulty_box{
-    background-color: #C2F5FF;
+.difficulty_box {
+    background-color: #c2f5ff;
     background-size: cover;
     box-sizing: border-box;
     border-radius: 12px;
@@ -36,15 +36,12 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 59px;
-    padding-bottom: 59px;
-    padding-left: 59px;
-    padding-right: 59px;
+    padding: 59px;
     gap: 59px;
 }
 
-.difficulty_box__title{
-    font-family: "StratosSkyeng";
+.difficulty_box__title {
+    font-family: StratosSkyeng, sans-serif;
     text-align: center;
     font-style: normal;
     line-height: 48px;
@@ -53,29 +50,29 @@ body{
     color: #004980;
 }
 
-.difficulty_box__choice{
+.difficulty_box__choice {
     display: flex;
     column-gap: 23px;
 }
 
-.button_level{
-    font-family: "StratosSkyeng";
+.button_level {
+    font-family: StratosSkyeng, sans-serif;
     width: 98px;
     height: 98px;
-    background-color: #FFFFFF;
-    border: 1px solid #FFFFFF;
+    background-color: #fff;
+    border: 1px solid #fff;
     box-sizing: border-box;
     border-radius: 12px;
     font-weight: 400;
     font-size: 64px;
     line-height: 72px;
-    color: #0080C1;
+    color: #0080c1;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.button_level__radio{
+.button_level__radio {
     display: none;
 }
 
@@ -83,16 +80,16 @@ body{
     border: 3px solid #004980;
 }
 
-.button_start{
-    font-family: "StratosSkyeng";
+.button_start {
+    font-family: StratosSkyeng, sans-serif;
     width: 246px;
     height: 50px;
-    background-color: #7AC100;
-    border: 1px solid #7AC100;
+    background-color: #7ac100;
+    border: 1px solid #7ac100;
     box-sizing: border-box;
     border-radius: 12px;
     font-weight: 400;
     font-size: 24px;
     line-height: 32px;
-    color: #FFFFFF;
+    color: #fff;
 }
