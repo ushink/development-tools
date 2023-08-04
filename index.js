@@ -1,4 +1,4 @@
-import { renderLevel } from "./level-game.js";
+import { renderLevel } from './level-game.js';
 
 function renderFormSelectionLevel() {
     let appEl = document.getElementById('app');
@@ -27,18 +27,19 @@ function renderFormSelectionLevel() {
 
     appEl.innerHTML = appHTML;
 
-    document.getElementById('form-selection').addEventListener('submit', (event) => {
-        event.preventDefault();
+    document
+        .getElementById('form-selection')
+        .addEventListener('submit', (event) => {
+            event.preventDefault();
 
-        let level = document.querySelectorAll('.button_level__radio');
+            let level = document.querySelectorAll('.button_level__radio');
 
-        for (const card of level) {
-            if (card.checked) {
-                renderLevel(card, appEl);
+            for (const card of level) {
+                if (card.checked) {
+                    renderLevel(card, appEl);
+                }
             }
-        }
-        
-    })
+        });
 
     /* другой вариант обработки клика
     let level = document.querySelectorAll('.button_level__radio');
@@ -54,7 +55,6 @@ function renderFormSelectionLevel() {
         }
     });
     */
-  
 }
 
 renderFormSelectionLevel();
