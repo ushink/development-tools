@@ -1,7 +1,13 @@
+/* stylelint-disable function-url-quotes */
+/* stylelint-disable comment-empty-line-before */
+/* stylelint-disable comment-whitespace-inside */
+/*!*************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./style.css ***!
+  \*************************************************************/
 /* stylelint-disable prettier/prettier */
 @font-face {
     font-family: StratosSkyeng;
-    src: url('./font-skyeng/Web\ fonts/stratosskyengweb-regular.woff');
+    src: url(d7d99bd522cf2d77ce4a.woff);
     font-style: normal;
     font-weight: normal;
 }
@@ -156,4 +162,7 @@ body {
     flex-wrap: wrap;
     gap: 12px;
     justify-content: center;
-}
+}/*# sourceMappingURL=style.css.map */
+
+
+/*# sourceMappingURL=main.css.map*/

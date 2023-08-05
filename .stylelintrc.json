@@ -2,9 +2,9 @@
     "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
     "plugins": ["stylelint-prettier"],
     "rules": {
-        "string-quotes": "single",
         "selector-class-pattern": null,
         "prettier/prettier": true,
+        "no-invalid-position-at-import-rule": null,
         "font-family-no-missing-generic-family-keyword": [
             true,
             {

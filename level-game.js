@@ -1,4 +1,4 @@
-import { cardsSuitsArr } from "./wholeCardsSuits.js";
+import { cardsSuitsArr } from './wholeCardsSuits.js';
 
 export function renderLevel(card, appEl) {
     let levelGame = card.value;
@@ -7,14 +7,13 @@ export function renderLevel(card, appEl) {
     function getCardsFlipSideArr(levelGame) {
         for (let i = 0; i < levelGame; i++) {
             cardsFlipSide.push(
-                `<img id="cards-click" class="game_card__flip" src="./img/рубашка.png">`,
+                `<img id="cards-click" class="game_card__flip" src="./static/img/рубашка.png">`,
             );
         }
         return cardsFlipSide;
     }
 
     getCardsFlipSideArr(levelGame);
-
 
     const appHTML = `
     <div class="game_card__box">

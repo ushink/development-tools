@@ -1,3 +1,4 @@
+import './style.css';
 import { renderLevel } from './level-game.js';
 
 function renderFormSelectionLevel() {
