@@ -1,8 +1,9 @@
-import { renderLevel } from './level-game.js';
+import './style.css';
+import { playGame } from './js/play-game.js';
 
-function renderFormSelectionLevel() {
-    let appEl = document.getElementById('app');
+let appEl = document.getElementById('app');
 
+function renderFormSelectionLevel(appEl, renderListHtml) {
     const appHTML = `
     <div class="center">
     <form class="difficulty_box" id="form-selection" action="#">
@@ -29,32 +30,18 @@ function renderFormSelectionLevel() {
 
     document
         .getElementById('form-selection')
-        .addEventListener('submit', (event) => {
-            event.preventDefault();
+            .addEventListener('submit', (event) => {
+                event.preventDefault();
 
-            let level = document.querySelectorAll('.button_level__radio');
+                let level = document.querySelectorAll('.button_level__radio');
 
-            for (const card of level) {
-                if (card.checked) {
-                    renderLevel(card, appEl);
+                for (const card of level) {
+                    if (card.checked) {
+                        renderListHtml(card, appEl);
+                    }
                 }
-            }
-        });
+            });
 
-    /* другой вариант обработки клика
-    let level = document.querySelectorAll('.button_level__radio');
-    let button = document.querySelector('.button_start');
-
-    button.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        for (let card of level) {
-            if (card.checked) {
-                renderLevel(card, appEl);
-            }
-        }
-    });
-    */
 }
 
-renderFormSelectionLevel();
+renderFormSelectionLevel(appEl, playGame);
