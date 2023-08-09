@@ -1,4 +1,4 @@
-export function renderListHtml(currentCardArr, appEl) {
+export function renderListHtml(currentCardArr: string[], appEl:Element) {
     const appHTML = `
     <div class="game_card__box">
             <header class="header">

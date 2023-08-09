@@ -1,4 +1,4 @@
-export const createCardArray = [
+export const createCardArray:string[] = [
     `<img class="game_card__flip" src="./static/img/6 бубны.png" alt="6 бубны">`,
     `<img class="game_card__flip" src="./static/img/6 крести.png" alt="6 крести">`,
     `<img class="game_card__flip" src="./static/img/6 пики.png" alt="6 пики">`,
@@ -46,7 +46,7 @@ export const createCardArray = [
 ];
 
 //массив рубашек
-export const defaultCardArray = [];
+export const defaultCardArray:string[] = [];
 
 for (let i = 0; i < 36; i++) {
     defaultCardArray.push(
