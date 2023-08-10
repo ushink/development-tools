@@ -3,7 +3,7 @@ import { playGame } from './js/play-game';
 
 let appEl:Element|null = document.getElementById('app');
 
-function renderFormSelectionLevel(appEl:Element|null, playGame:(lengthArray:number, appEl:Element) => void) {
+export function renderFormSelectionLevel(appEl:Element|null, playGame:(lengthArray:number, appEl:Element) => void) {
     const appHTML = `
     <div class="center">
     <form class="difficulty_box" id="form-selection" action="#">

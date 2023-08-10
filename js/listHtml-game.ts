@@ -1,4 +1,4 @@
-export function renderListHtml(currentCardArr: string[], appEl:Element) {
+export function renderListHtml(currentCardArr: string[], appEl:Element, minutes:number, seconds:number) {
     const appHTML = `
     <div class="game_card__box">
             <header class="header">
@@ -7,7 +7,7 @@ export function renderListHtml(currentCardArr: string[], appEl:Element) {
                        <p class="game_timer__item">min</p>
                        <p class="game_timer__item">sek</p>
                    </div>   
-                    <p class="game_timer__time">00.00</p>         
+                    <p class="game_timer__time"> ${"0" + minutes}:${"0" + seconds}</p>         
                 </div>
                 <button class="header_game__button" id="submit-button" type="submit">Начать заново</button>
             </header>

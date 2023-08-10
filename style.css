@@ -28,7 +28,8 @@ body {
     padding-right: calc(50% - 600px);
 }
 
-.difficulty_box {
+.difficulty_box,
+.modal {
     background-color: #c2f5ff;
     background-size: cover;
     box-sizing: border-box;
