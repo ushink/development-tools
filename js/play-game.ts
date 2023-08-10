@@ -1,6 +1,6 @@
 import { createCardArray, defaultCardArray } from './card-game';
 import { renderListHtml } from './listHtml-game';
-import { renderHtmlWin } from './renderListWin.js';
+import { renderHtmlWin } from './renderListWin';
 
 export function playGame(lengthArray:number, appEl:Element) {
     //let lengthArray = card.value;
@@ -64,11 +64,11 @@ export function playGame(lengthArray:number, appEl:Element) {
 
             currentCardArr[secondCard] = sortCardArray[secondCard];
             goodGame === true
-            ? renderHtmlWin(goodGame )
+            ? renderHtmlWin(goodGame,appEl)
             : showCoverCard
         } else {
             currentCardArr = sortCardArray;
-            renderHtmlWin( goodGame)
+            renderHtmlWin(goodGame, appEl)
             flag = false
         }
     }
