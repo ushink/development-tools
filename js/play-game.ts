@@ -1,6 +1,7 @@
 import { createCardArray, defaultCardArray } from './card-game';
 import { renderListHtml } from './listHtml-game';
 import { renderHtmlWin } from './renderListWin';
+import { gameTimer } from './timer-game';
 
 export function playGame(lengthArray:number, appEl:Element) {
     //let lengthArray = card.value;
@@ -12,6 +13,11 @@ export function playGame(lengthArray:number, appEl:Element) {
     let firstCard:number = 0;
     let secondCard:number = 0;
 
+    let seconds:number = 0;
+    let minutes:number = 0;
+    let timeStop:boolean = false;
+    let id:NodeJS.Timer;
+
     let sortCardArray = createCardArray
         .sort(() => Math.random() - 0.5)
         .slice(0, lengthArray / 2);
@@ -22,10 +28,16 @@ export function playGame(lengthArray:number, appEl:Element) {
     let sortDefaultCardArr = defaultCardArray.slice(0, lengthArray);
     currentCardArr = sortDefaultCardArr;
 
-    renderListHtml(sortCardArray, appEl);
+    renderListHtml(sortCardArray, appEl, minutes, seconds);
+
+    setTimeout(() => {
+        if (id) {
+            id = gameTimer(minutes, seconds, timeStop);
+        }
+      }, 5000);
 
     function showCoverCard() {
-        renderListHtml(currentCardArr, appEl);
+        renderListHtml(currentCardArr, appEl, minutes, seconds);
         const suits = document.getElementById('suits')
         
         if (suits) {
@@ -50,6 +62,8 @@ export function playGame(lengthArray:number, appEl:Element) {
                         goodGame = !goodGame;
                         compareCard(firstCard, secondCard);
                         showCoverCard();
+                        timeStop = true;
+                        clearInterval(id);
                     }
                     flag = !flag;
                 });
@@ -67,6 +81,8 @@ export function playGame(lengthArray:number, appEl:Element) {
             ? renderHtmlWin(goodGame,appEl)
             : showCoverCard
         } else {
+            timeStop = true;
+            clearInterval(id);
             currentCardArr = sortCardArray;
             renderHtmlWin(goodGame, appEl)
             flag = false
