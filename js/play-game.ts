@@ -1,11 +1,13 @@
 import { createCardArray, defaultCardArray } from './card-game';
 import { renderListHtml } from './listHtml-game';
+import { renderHtmlWin } from './renderListWin.js';
 
 export function playGame(lengthArray:number, appEl:Element) {
     //let lengthArray = card.value;
     let currentCardArr:string[] = [];
 
     let flag:boolean = true;
+    let goodGame:boolean = false;
 
     let firstCard:number = 0;
     let secondCard:number = 0;
@@ -40,10 +42,12 @@ export function playGame(lengthArray:number, appEl:Element) {
     
                     if (flag && cardIndex) {
                         firstCard = cardIndex;
+                        goodGame = !goodGame;
                         currentCardArr[cardIndex] = sortCardArray[cardIndex];
                         showCoverCard();
                     } else {
                         secondCard = cardIndex;
+                        goodGame = !goodGame;
                         compareCard(firstCard, secondCard);
                         showCoverCard();
                     }
@@ -55,12 +59,17 @@ export function playGame(lengthArray:number, appEl:Element) {
     setTimeout(showCoverCard, 5000);
 
     function compareCard(firstCard:number, secondCard:number) {
+
         if (sortCardArray[firstCard] === sortCardArray[secondCard]) {
-            currentCardArr = sortCardArray;
-            alert('Выиграл');
+
+            currentCardArr[secondCard] = sortCardArray[secondCard];
+            goodGame === true
+            ? renderHtmlWin(goodGame )
+            : showCoverCard
         } else {
             currentCardArr = sortCardArray;
-            alert('Проиграл');
+            renderHtmlWin( goodGame)
+            flag = false
         }
     }
 }
