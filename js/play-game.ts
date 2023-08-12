@@ -1,7 +1,6 @@
 import { createCardArray, defaultCardArray } from './card-game';
 import { renderListHtml } from './listHtml-game';
 import { renderHtmlWin } from './renderListWin';
-import { gameTimer } from './timer-game';
 
 export function playGame(lengthArray:number, appEl:Element) {
     //let lengthArray = card.value;
@@ -13,11 +12,6 @@ export function playGame(lengthArray:number, appEl:Element) {
     let firstCard:number = 0;
     let secondCard:number = 0;
 
-    let seconds:number = 0;
-    let minutes:number = 0;
-    let timeStop:boolean = false;
-    let id:NodeJS.Timer;
-
     let sortCardArray = createCardArray
         .sort(() => Math.random() - 0.5)
         .slice(0, lengthArray / 2);
@@ -28,16 +22,13 @@ export function playGame(lengthArray:number, appEl:Element) {
     let sortDefaultCardArr = defaultCardArray.slice(0, lengthArray);
     currentCardArr = sortDefaultCardArr;
 
-    renderListHtml(sortCardArray, appEl, minutes, seconds);
+    renderListHtml(sortCardArray, appEl);
 
-    setTimeout(() => {
-        if (id) {
-            id = gameTimer(minutes, seconds, timeStop);
-        }
-      }, 5000);
+    const cardsHeader:HTMLElement|null = document.querySelector(".header_game__timer");
+    
 
     function showCoverCard() {
-        renderListHtml(currentCardArr, appEl, minutes, seconds);
+        renderListHtml(currentCardArr, appEl);
         const suits = document.getElementById('suits')
         
         if (suits) {
@@ -50,20 +41,20 @@ export function playGame(lengthArray:number, appEl:Element) {
                 itemCard.addEventListener('click', () => {
     
                     let cardIndex = Number((itemCard as HTMLElement).dataset.index);
-                    //let duplicate = itemCard.dataset.index;
     
                     if (flag && cardIndex) {
                         firstCard = cardIndex;
-                        goodGame = !goodGame;
+                        goodGame = !goodGame; 
+
                         currentCardArr[cardIndex] = sortCardArray[cardIndex];
                         showCoverCard();
                     } else {
                         secondCard = cardIndex;
                         goodGame = !goodGame;
+                        
                         compareCard(firstCard, secondCard);
                         showCoverCard();
-                        timeStop = true;
-                        clearInterval(id);
+
                     }
                     flag = !flag;
                 });
@@ -71,7 +62,7 @@ export function playGame(lengthArray:number, appEl:Element) {
         }
     }
     setTimeout(showCoverCard, 5000);
-
+    
     function compareCard(firstCard:number, secondCard:number) {
 
         if (sortCardArray[firstCard] === sortCardArray[secondCard]) {
@@ -81,11 +72,9 @@ export function playGame(lengthArray:number, appEl:Element) {
             ? renderHtmlWin(goodGame,appEl)
             : showCoverCard
         } else {
-            timeStop = true;
-            clearInterval(id);
             currentCardArr = sortCardArray;
-            renderHtmlWin(goodGame, appEl)
-            flag = false
+            renderHtmlWin(goodGame, appEl);
+            flag = false;
         }
     }
 }
