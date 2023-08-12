@@ -29,8 +29,6 @@ export function playGame(lengthArray:number, appEl:Element) {
 
     renderListHtml(sortCardArray, appEl);
 
-    const cardsHeader = document.querySelector(".game_card__box");
-
     const min = document.getElementById('minutes');
     const sec = document.getElementById('seconds');
 
@@ -64,7 +62,6 @@ export function playGame(lengthArray:number, appEl:Element) {
                     } else {
                         secondCard = cardIndex;
                         goodGame = !goodGame;
-                        (cardsHeader as HTMLElement).style.opacity = ".3";
                         
                         clearInterval(TimeId);
                         compareCard(firstCard, secondCard);
@@ -88,7 +85,6 @@ export function playGame(lengthArray:number, appEl:Element) {
             flag = false;
             renderHtmlWin(goodGame, appEl, min, sec);
 
-            (cardsHeader as HTMLElement).style.opacity = ".3";
             clearInterval(TimeId);
         }
     }
