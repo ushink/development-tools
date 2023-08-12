@@ -34,14 +34,9 @@ export function playGame(lengthArray:number, appEl:Element) {
     const min = document.getElementById('minutes');
     const sec = document.getElementById('seconds');
 
-    //не включается после 5 сек
-    // setTimeout(() => {
-    //     if (TimeId) {
-    //         TimeId = Timer(minutes, seconds, min, sec);
-    //     }  
-    // }, 5000);
-
-    Timer(minutes, seconds, min, sec);
+    setTimeout(() => {
+        TimeId = Timer(minutes, seconds, min, sec);
+    }, 5000);
 
     function showCoverCard() {
 
