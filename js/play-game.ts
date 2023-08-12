@@ -1,6 +1,7 @@
 import { createCardArray, defaultCardArray } from './card-game';
 import { renderListHtml } from './listHtml-game';
 import { renderHtmlWin } from './renderListWin';
+import { Timer } from './timer-game';
 
 export function playGame(lengthArray:number, appEl:Element) {
     //let lengthArray = card.value;
@@ -11,6 +12,10 @@ export function playGame(lengthArray:number, appEl:Element) {
 
     let firstCard:number = 0;
     let secondCard:number = 0;
+
+    let minutes:number = 0;
+    let seconds:number = 0;
+    let TimeId: NodeJS.Timer;
 
     let sortCardArray = createCardArray
         .sort(() => Math.random() - 0.5)
@@ -24,11 +29,24 @@ export function playGame(lengthArray:number, appEl:Element) {
 
     renderListHtml(sortCardArray, appEl);
 
-    const cardsHeader:HTMLElement|null = document.querySelector(".header_game__timer");
-    
+    const cardsHeader = document.querySelector(".game_card__box");
+
+    const min = document.getElementById('minutes');
+    const sec = document.getElementById('seconds');
+
+    //не включается после 5 сек
+    // setTimeout(() => {
+    //     if (TimeId) {
+    //         TimeId = Timer(minutes, seconds, min, sec);
+    //     }  
+    // }, 5000);
+
+    Timer(minutes, seconds, min, sec);
 
     function showCoverCard() {
+
         renderListHtml(currentCardArr, appEl);
+
         const suits = document.getElementById('suits')
         
         if (suits) {
@@ -45,13 +63,15 @@ export function playGame(lengthArray:number, appEl:Element) {
                     if (flag && cardIndex) {
                         firstCard = cardIndex;
                         goodGame = !goodGame; 
-
                         currentCardArr[cardIndex] = sortCardArray[cardIndex];
                         showCoverCard();
+                        
                     } else {
                         secondCard = cardIndex;
                         goodGame = !goodGame;
+                        (cardsHeader as HTMLElement).style.opacity = ".3";
                         
+                        clearInterval(TimeId);
                         compareCard(firstCard, secondCard);
                         showCoverCard();
 
@@ -66,15 +86,17 @@ export function playGame(lengthArray:number, appEl:Element) {
     function compareCard(firstCard:number, secondCard:number) {
 
         if (sortCardArray[firstCard] === sortCardArray[secondCard]) {
-
             currentCardArr[secondCard] = sortCardArray[secondCard];
-            goodGame === true
-            ? renderHtmlWin(goodGame,appEl)
-            : showCoverCard
+            showCoverCard;
         } else {
             currentCardArr = sortCardArray;
-            renderHtmlWin(goodGame, appEl);
             flag = false;
+            renderHtmlWin(goodGame, appEl, min, sec);
+
+            (cardsHeader as HTMLElement).style.opacity = ".3";
+            clearInterval(TimeId);
         }
     }
+    
 }
+

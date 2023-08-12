@@ -1,7 +1,7 @@
 import { renderFormSelectionLevel } from "../index";
 import { playGame } from "./play-game";
 
-export function renderHtmlWin(goodGame:boolean, appEl:Element) {
+export function renderHtmlWin(goodGame:boolean, appEl:Element, min:HTMLElement|null, sec:HTMLElement|null) {
     
     let modalWindowEl = document.getElementById('modal');
     const modalWindowHtml = `
@@ -18,7 +18,7 @@ export function renderHtmlWin(goodGame:boolean, appEl:Element) {
                 ${goodGame === true ? 'Вы выиграли!' : 'Вы проиграли'}
             </h3>
             <p class="modal_content__text">Затраченное время</p>
-            <div class="modal_content__time">01.20</div>
+            <div class="modal_content__time">${min?.textContent}.${sec?.textContent}</div>
             <div class="modal_content__button">
                 <button class="modal_content__button" id="modal-button" type="submit">Играть снова</button>
             </div>   
