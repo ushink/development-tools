@@ -62,11 +62,8 @@ export function playGame(lengthArray:number, appEl:Element) {
                     } else {
                         secondCard = cardIndex;
                         goodGame = !goodGame;
-                        
-                        clearInterval(TimeId);
                         compareCard(firstCard, secondCard);
                         showCoverCard();
-
                     }
                     flag = !flag;
                 });
