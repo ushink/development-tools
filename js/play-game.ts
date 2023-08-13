@@ -15,6 +15,13 @@ export function playGame(lengthArray: number, appEl: Element) {
 
     let minutes: number = 0;
     let seconds: number = 0;
+    let currentDate: Date;
+    let combDate: string;
+
+    function getCurrentDate() {
+        return (currentDate = new Date());
+    }
+
     let TimeId: NodeJS.Timer;
 
     let sortCardArray = createCardArray
@@ -29,21 +36,13 @@ export function playGame(lengthArray: number, appEl: Element) {
 
     renderListHtml(sortCardArray, appEl);
 
-    const min = document.getElementById('minutes');
-    const sec = document.getElementById('seconds');
-
     setTimeout(() => {
-        TimeId = Timer(minutes, seconds, min, sec);
+        TimeId = Timer(minutes, seconds);
+        getCurrentDate();
     }, 5000);
 
-    function showCoverCard(min:HTMLElement|null, sec:HTMLElement|null) {
-
+    function showCoverCard() {
         renderListHtml(currentCardArr, appEl);
-
-        min = document.getElementById('minutes');
-        sec = document.getElementById('seconds');
-
-        Timer(minutes, seconds, min, sec);
 
         const suits = document.getElementById('suits');
 
@@ -61,12 +60,12 @@ export function playGame(lengthArray: number, appEl: Element) {
                         firstCard = cardIndex;
                         goodGame = !goodGame;
                         currentCardArr[cardIndex] = sortCardArray[cardIndex];
-                        showCoverCard(min, sec);
+                        showCoverCard();
                     } else {
                         secondCard = cardIndex;
                         goodGame = !goodGame;
                         compareCard(firstCard, secondCard);
-                        showCoverCard(min, sec);
+                        showCoverCard();
                     }
                     flag = !flag;
                 });
@@ -82,7 +81,7 @@ export function playGame(lengthArray: number, appEl: Element) {
         } else {
             currentCardArr = sortCardArray;
             flag = false;
-            renderHtmlWin(goodGame, appEl, min, sec);
+            renderHtmlWin(goodGame, appEl, currentDate, combDate);
             clearInterval(TimeId);
         }
     }
