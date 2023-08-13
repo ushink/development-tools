@@ -1,10 +1,7 @@
 import { renderFormSelectionLevel } from '../index';
 import { playGame } from './play-game';
 
-export function renderListHtml(
-    currentCardArr: string[], 
-    appEl:Element,
-    ) {
+export function renderListHtml(currentCardArr: string[], appEl: Element) {
     const appHTML = `
     <div class="game_card__box">
             <header class="header">
@@ -27,13 +24,12 @@ export function renderListHtml(
         </div>`;
 
     appEl.innerHTML = appHTML;
-    
-    const restartButton:Element|null = document.querySelector(".header_game__button");
 
-    restartButton?.addEventListener("click", () => {
+    const restartButton: Element | null = document.querySelector(
+        '.header_game__button',
+    );
+
+    restartButton?.addEventListener('click', () => {
         renderFormSelectionLevel(appEl, playGame);
     });
 }
-
-
-

@@ -3,18 +3,18 @@ import { renderListHtml } from './listHtml-game';
 import { renderHtmlWin } from './renderListWin';
 import { Timer } from './timer-game';
 
-export function playGame(lengthArray:number, appEl:Element) {
+export function playGame(lengthArray: number, appEl: Element) {
     //let lengthArray = card.value;
-    let currentCardArr:string[] = [];
+    let currentCardArr: string[] = [];
 
-    let flag:boolean = true;
-    let goodGame:boolean = false;
+    let flag: boolean = true;
+    let goodGame: boolean = false;
 
-    let firstCard:number = 0;
-    let secondCard:number = 0;
+    let firstCard: number = 0;
+    let secondCard: number = 0;
 
-    let minutes:number = 0;
-    let seconds:number = 0;
+    let minutes: number = 0;
+    let seconds: number = 0;
     let TimeId: NodeJS.Timer;
 
     let sortCardArray = createCardArray
@@ -37,28 +37,25 @@ export function playGame(lengthArray:number, appEl:Element) {
     }, 5000);
 
     function showCoverCard() {
-
         renderListHtml(currentCardArr, appEl);
 
-        const suits = document.getElementById('suits')
-        
+        const suits = document.getElementById('suits');
+
         if (suits) {
-            
             let itemCards = suits.children;
             const itemCardsArray = Array.from(itemCards);
-    
+
             for (const itemCard of itemCardsArray) {
-    
                 itemCard.addEventListener('click', () => {
-    
-                    let cardIndex = Number((itemCard as HTMLElement).dataset.index);
-    
+                    let cardIndex = Number(
+                        (itemCard as HTMLElement).dataset.index,
+                    );
+
                     if (flag && cardIndex) {
                         firstCard = cardIndex;
-                        goodGame = !goodGame; 
+                        goodGame = !goodGame;
                         currentCardArr[cardIndex] = sortCardArray[cardIndex];
                         showCoverCard();
-                        
                     } else {
                         secondCard = cardIndex;
                         goodGame = !goodGame;
@@ -71,9 +68,8 @@ export function playGame(lengthArray:number, appEl:Element) {
         }
     }
     setTimeout(showCoverCard, 5000);
-    
-    function compareCard(firstCard:number, secondCard:number) {
 
+    function compareCard(firstCard: number, secondCard: number) {
         if (sortCardArray[firstCard] === sortCardArray[secondCard]) {
             currentCardArr[secondCard] = sortCardArray[secondCard];
             showCoverCard;
@@ -85,6 +81,4 @@ export function playGame(lengthArray:number, appEl:Element) {
             clearInterval(TimeId);
         }
     }
-    
 }
-

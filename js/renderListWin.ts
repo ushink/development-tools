@@ -1,8 +1,12 @@
-import { renderFormSelectionLevel } from "../index";
-import { playGame } from "./play-game";
+import { renderFormSelectionLevel } from '../index';
+import { playGame } from './play-game';
 
-export function renderHtmlWin(goodGame:boolean, appEl:Element, min:HTMLElement|null, sec:HTMLElement|null) {
-    
+export function renderHtmlWin(
+    goodGame: boolean,
+    appEl: Element,
+    min: HTMLElement | null,
+    sec: HTMLElement | null,
+) {
     let modalWindowEl = document.getElementById('modal');
     const modalWindowHtml = `
     <div class="modal center">
@@ -10,8 +14,8 @@ export function renderHtmlWin(goodGame:boolean, appEl:Element, min:HTMLElement|n
             <div class= "modal_content__img">
             ${
                 goodGame === true
-                ? '<img src="static/img/ImageWin.svg" alt="выиграл" />'
-                : '<img src="static/img/ImageLose.svg" alt="проиграл" />'
+                    ? '<img src="static/img/ImageWin.svg" alt="выиграл" />'
+                    : '<img src="static/img/ImageLose.svg" alt="проиграл" />'
             }
             </div>
             <h3 class="modal_content__title">
@@ -24,23 +28,21 @@ export function renderHtmlWin(goodGame:boolean, appEl:Element, min:HTMLElement|n
             </div>   
         </div>
     </div>
-    `
+    `;
 
     if (modalWindowEl) {
-        modalWindowEl.innerHTML = modalWindowHtml
+        modalWindowEl.innerHTML = modalWindowHtml;
     }
 
-    const modalEl:HTMLElement|null = document.querySelector(".modal");
+    const modalEl: HTMLElement | null = document.querySelector('.modal');
 
-    document.querySelector(".modal_content__button")?.addEventListener("click", () => {
-        
-        renderFormSelectionLevel(appEl, playGame);
-        
-        if (modalEl) {
+    document
+        .querySelector('.modal_content__button')
+        ?.addEventListener('click', () => {
+            renderFormSelectionLevel(appEl, playGame);
 
-            modalEl.style.display = "none";
-        }
-        
-      });
-    
+            if (modalEl) {
+                modalEl.style.display = 'none';
+            }
+        });
 }
