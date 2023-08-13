@@ -36,8 +36,14 @@ export function playGame(lengthArray: number, appEl: Element) {
         TimeId = Timer(minutes, seconds, min, sec);
     }, 5000);
 
-    function showCoverCard() {
+    function showCoverCard(min:HTMLElement|null, sec:HTMLElement|null) {
+
         renderListHtml(currentCardArr, appEl);
+
+        min = document.getElementById('minutes');
+        sec = document.getElementById('seconds');
+
+        Timer(minutes, seconds, min, sec);
 
         const suits = document.getElementById('suits');
 
@@ -55,12 +61,12 @@ export function playGame(lengthArray: number, appEl: Element) {
                         firstCard = cardIndex;
                         goodGame = !goodGame;
                         currentCardArr[cardIndex] = sortCardArray[cardIndex];
-                        showCoverCard();
+                        showCoverCard(min, sec);
                     } else {
                         secondCard = cardIndex;
                         goodGame = !goodGame;
                         compareCard(firstCard, secondCard);
-                        showCoverCard();
+                        showCoverCard(min, sec);
                     }
                     flag = !flag;
                 });
@@ -77,7 +83,6 @@ export function playGame(lengthArray: number, appEl: Element) {
             currentCardArr = sortCardArray;
             flag = false;
             renderHtmlWin(goodGame, appEl, min, sec);
-
             clearInterval(TimeId);
         }
     }
