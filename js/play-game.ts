@@ -13,8 +13,8 @@ export function playGame(lengthArray: number, appEl: Element) {
     let firstCard: number = 0;
     let secondCard: number = 0;
 
-    let minutes: number = 0;
-    let seconds: number = 0;
+    const minutes: number = 0;
+    const seconds: number = 0;
     let currentDate: Date;
     let combDate: string;
 
@@ -31,10 +31,13 @@ export function playGame(lengthArray: number, appEl: Element) {
         .concat(sortCardArray)
         .sort(() => Math.random() - 0.5);
 
-    let sortDefaultCardArr = defaultCardArray.slice(0, lengthArray);
+    const sortDefaultCardArr = defaultCardArray.slice(0, lengthArray);
     currentCardArr = sortDefaultCardArr;
 
-    renderListHtml(sortCardArray, appEl);
+    if (appEl) {
+        appEl.innerHTML = '';
+        renderListHtml(sortCardArray, appEl);
+    }
 
     setTimeout(() => {
         TimeId = Timer(minutes, seconds);
@@ -42,34 +45,44 @@ export function playGame(lengthArray: number, appEl: Element) {
     }, 5000);
 
     function showCoverCard() {
-        renderListHtml(currentCardArr, appEl);
-
-        const suits = document.getElementById('suits');
+        const suits: HTMLElement | null = document.getElementById('suits');
 
         if (suits) {
-            let itemCards = suits.children;
-            const itemCardsArray = Array.from(itemCards);
+            suits.innerHTML = `${currentCardArr.join('')}`;
+        }
 
-            for (const itemCard of itemCardsArray) {
-                itemCard.addEventListener('click', () => {
-                    let cardIndex = Number(
-                        (itemCard as HTMLElement).dataset.index,
-                    );
+        const itemCards = document.querySelectorAll('.game_card__flip');
 
-                    if (flag && cardIndex) {
-                        firstCard = cardIndex;
-                        goodGame = !goodGame;
-                        currentCardArr[cardIndex] = sortCardArray[cardIndex];
-                        showCoverCard();
-                    } else {
-                        secondCard = cardIndex;
-                        goodGame = !goodGame;
-                        compareCard(firstCard, secondCard);
-                        showCoverCard();
+        const itemCardsArray = Array.from(itemCards);
+
+        for (const itemCard of itemCardsArray) {
+            itemCard.addEventListener('click', () => {
+                const cardIndex = Number(
+                    (itemCard as HTMLElement).dataset.index,
+                );
+                const suits: HTMLElement | null =
+                    document.getElementById('suits');
+
+                if (flag && cardIndex) {
+                    firstCard = cardIndex;
+                    goodGame = !goodGame;
+                    currentCardArr[cardIndex] = sortCardArray[cardIndex];
+
+                    if (suits) {
+                        suits.innerHTML = `${currentCardArr.join('')}`;
                     }
-                    flag = !flag;
-                });
-            }
+
+                    showCoverCard();
+                } else {
+                    secondCard = cardIndex;
+                    goodGame = !goodGame;
+                    currentCardArr[cardIndex] = sortCardArray[cardIndex];
+
+                    showCoverCard();
+                    compareCard(firstCard, secondCard);
+                }
+                flag = !flag;
+            });
         }
     }
     setTimeout(showCoverCard, 5000);

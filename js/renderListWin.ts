@@ -24,7 +24,7 @@ export function renderHtmlWin(
     }
     getTimeModalWindow(minutModal, secondModal);
 
-    let modalWindowEl = document.getElementById('modal');
+    const modalWindowEl = document.getElementById('modal');
     const modalWindowHtml = `
     <div class="modal center">
         <div class="modal_content">
