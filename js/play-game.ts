@@ -15,12 +15,6 @@ export function playGame(lengthArray: number, appEl: Element) {
 
     const minutes: number = 0;
     const seconds: number = 0;
-    let currentDate: Date;
-    let combDate: string;
-
-    function getCurrentDate() {
-        return (currentDate = new Date());
-    }
 
     let TimeId: NodeJS.Timer;
 
@@ -39,9 +33,11 @@ export function playGame(lengthArray: number, appEl: Element) {
         renderListHtml(sortCardArray, appEl);
     }
 
+    const min = document.getElementById('minutes');
+    const sec = document.getElementById('seconds');
+
     setTimeout(() => {
-        TimeId = Timer(minutes, seconds);
-        getCurrentDate();
+        TimeId = Timer(minutes, seconds, min, sec);
     }, 5000);
 
     function showCoverCard() {
@@ -94,7 +90,7 @@ export function playGame(lengthArray: number, appEl: Element) {
         } else {
             currentCardArr = sortCardArray;
             flag = false;
-            renderHtmlWin(goodGame, appEl, currentDate, combDate);
+            renderHtmlWin(goodGame, appEl, min,sec);
             clearInterval(TimeId);
         }
     }

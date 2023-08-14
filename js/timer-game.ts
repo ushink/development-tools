@@ -1,7 +1,5 @@
-export function Timer(minutes: number, seconds: number) {
+export function Timer(minutes: number, seconds: number, min:HTMLElement|null, sec:HTMLElement|null) {
     const interval = setInterval(() => {
-        const min = document.getElementById('minutes');
-        const sec = document.getElementById('seconds');
 
         seconds++;
 
