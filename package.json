@@ -38,7 +38,7 @@
         "lint": "npm run lint:js && npm run lint:css",
         "prepare": "husky install",
         "lint:ts": "tsc --noEmit",
-        "test": "@jest/globals"
+        "test": "jest"
     },
     "keywords": [],
     "author": "",
