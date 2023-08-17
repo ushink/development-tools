@@ -82,18 +82,25 @@ body {
 }
 
 .button_start,
+.header_game__button,
 .modal_content__button {
     font-family: StratosSkyeng, sans-serif;
     width: 246px;
     height: 50px;
     background-color: #7ac100;
-    border: 1px solid #7ac100;
+    border: none;
     box-sizing: border-box;
     border-radius: 12px;
     font-weight: 400;
     font-size: 24px;
     line-height: 32px;
     color: #fff;
+}
+
+.button_start:hover {
+	background: rgb(0 0 0 / 0%);
+	color: #004980;
+	box-shadow: inset 0 0 0 2px #004980;
 }
 
 .game_card__box {
@@ -140,18 +147,10 @@ body {
     display: flex;
 }
 
-.header_game__button {
-    font-family: StratosSkyeng, sans-serif;
-    width: 246px;
-    height: 50px;
-    background-color: #7ac100;
-    border: 1px solid #7ac100;
-    box-sizing: border-box;
-    border-radius: 12px;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 32px;
-    color: #fff;
+.header_game__button:hover {
+	background: rgb(0 0 0 / 0%);
+	color: #e8ecee;
+	box-shadow: inset 0 0 0 2px #e8ecee;
 }
 
 .game_card {
@@ -198,4 +197,10 @@ body {
 
 .modal_content__time {
     color: #000;
+}
+
+.modal_content__button:hover {
+	background: rgb(0 0 0 / 0%);
+	color: #004980;
+	box-shadow: inset 0 0 0 2px #004980;
 }
