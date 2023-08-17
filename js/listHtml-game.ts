@@ -4,7 +4,7 @@ import { playGame } from './play-game';
 export function renderListHtml(currentCardArr: string[], appEl: Element) {
     const appHTML = `
     <div class="game_card__box">
-            <header class="header">
+            <header class="header center">
                 <div class="header_game__timer">  
                    <div class="game_timer">
                        <p class="game_timer__item">min</p>
@@ -18,7 +18,7 @@ export function renderListHtml(currentCardArr: string[], appEl: Element) {
                 </div>
                 <button class="header_game__button" id="submit-button" type="submit">Начать заново</button>
             </header>
-            <div class="game_card" id="suits">
+            <div class="game_card center" id="suits">
             ${currentCardArr.join('')}
             </div>
         </div>`;
