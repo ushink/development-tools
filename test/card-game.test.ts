@@ -8,7 +8,7 @@ describe('Проверяем полученный массив',() => {
     })
 
     test('массив включает в себя строку',() => {
-        const i = 36;
+        const i = 35;
         expect(defaultCardArray).toContain(`<img class="game_card__flip" data-index="${i}" src="./static/img/рубашка.png">`)
     })
 
