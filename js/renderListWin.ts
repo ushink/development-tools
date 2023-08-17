@@ -2,7 +2,7 @@ import { renderFormSelectionLevel } from '../index';
 import { playGame } from './play-game';
 
 export function renderHtmlWin(
-    goodGame: boolean,
+    goodGame: number,
     appEl: Element,
     min:HTMLElement|null, sec:HTMLElement|null
 ) {
@@ -12,13 +12,13 @@ export function renderHtmlWin(
         <div class="modal_content">
             <div class= "modal_content__img">
             ${
-                goodGame === true
+                goodGame === 0
                     ? '<img src="static/img/ImageWin.svg" alt="выиграл" />'
                     : '<img src="static/img/ImageLose.svg" alt="проиграл" />'
             }
             </div>
             <h3 class="modal_content__title">
-                ${goodGame === true ? 'Вы выиграли!' : 'Вы проиграли'}
+                ${goodGame === 0 ? 'Вы выиграли!' : 'Вы проиграли'}
             </h3>
             <p class="modal_content__text">Затраченное время</p>
             <div class="modal_content__time">${min?.textContent}.${sec?.textContent}</div>

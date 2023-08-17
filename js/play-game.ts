@@ -8,7 +8,7 @@ export function playGame(lengthArray: number, appEl: Element) {
     let currentCardArr: string[] = [];
 
     let flag: boolean = true;
-    let goodGame: boolean = false;
+    let goodGame: number = lengthArray;
 
     let firstCard: number = 0;
     let secondCard: number = 0;
@@ -61,7 +61,7 @@ export function playGame(lengthArray: number, appEl: Element) {
 
                 if (flag && cardIndex) {
                     firstCard = cardIndex;
-                    goodGame = !goodGame;
+                    goodGame = --goodGame;
                     currentCardArr[cardIndex] = sortCardArray[cardIndex];
 
                     if (suits) {
@@ -71,7 +71,7 @@ export function playGame(lengthArray: number, appEl: Element) {
                     showCoverCard();
                 } else {
                     secondCard = cardIndex;
-                    goodGame = !goodGame;
+                    goodGame = --goodGame;
                     currentCardArr[cardIndex] = sortCardArray[cardIndex];
 
                     showCoverCard();
@@ -86,7 +86,14 @@ export function playGame(lengthArray: number, appEl: Element) {
     function compareCard(firstCard: number, secondCard: number) {
         if (sortCardArray[firstCard] === sortCardArray[secondCard]) {
             currentCardArr[secondCard] = sortCardArray[secondCard];
-            showCoverCard;
+
+            if (goodGame === 0) {
+                renderHtmlWin(goodGame, appEl, min,sec);
+                clearInterval(TimeId);
+            } else {
+                showCoverCard;
+            }
+            
         } else {
             currentCardArr = sortCardArray;
             flag = false;
