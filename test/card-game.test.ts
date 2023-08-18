@@ -8,7 +8,8 @@ describe('Проверяем полученный массив',() => {
     })
 
     test('массив включает в себя строку',() => {
-        expect(defaultCardArray).toContain(`<img class="game_card__flip" data-index="${3}" src="./static/img/рубашка.png">`)
+        const i = 35;
+        expect(defaultCardArray).toContain(`<img class="game_card__flip" data-index="${i}" src="./static/img/рубашка.png">`)
     })
 
     test('массив длинной 36 карт',() => {
